@@ -89,9 +89,22 @@
     captureReader.captureDelegate = (id<ZBarCaptureDelegate>)self;
     [session addOutput: captureReader.captureOutput];
 
-    if([session canSetSessionPreset: AVCaptureSessionPreset640x480])
+    if([session canSetSessionPreset: AVCaptureSessionPreset640x480]) {
         session.sessionPreset = AVCaptureSessionPreset640x480;
-
+    }if([session canSetSessionPreset: AVCaptureSessionPreset1280x720]) {
+        session.sessionPreset = AVCaptureSessionPreset1280x720;
+    }else if([session canSetSessionPreset: AVCaptureSessionPreset1920x1080]) {
+        session.sessionPreset = AVCaptureSessionPreset1920x1080;
+    }else if([session canSetSessionPreset: AVCaptureSessionPreset3840x2160]) {
+        session.sessionPreset = AVCaptureSessionPreset3840x2160;
+    }else if([session canSetSessionPreset: AVCaptureSessionPresetiFrame960x540]) {
+        session.sessionPreset = AVCaptureSessionPresetiFrame960x540;
+    }else if([session canSetSessionPreset: AVCaptureSessionPresetiFrame1280x720]) {
+        session.sessionPreset = AVCaptureSessionPresetiFrame1280x720;
+    }else if([session canSetSessionPreset: AVCaptureSessionPresetInputPriority]) {
+        session.sessionPreset = AVCaptureSessionPresetInputPriority;
+    }
+    
     [captureReader addObserver: self
                    forKeyPath: @"size"
                    options: 0
